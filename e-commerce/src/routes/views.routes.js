@@ -9,7 +9,7 @@ const router = Router();
 router.get("/", async (req,res)=>{
     try{
         //si no esta logeado lo redirige a login
-        if(!req.user?.email){
+        if(!req.user){
             res.render('login', { error: 'Para navegar debe iniciar session'})
         }else{   
         
@@ -69,7 +69,7 @@ router.get('/register', (req, res) => {
 //ruta para el perfil de usuario
 router.get('/profile', (req, res) => {
     try {
-        if(!req.user?.email){
+        if(!req.user){
             res.render('login', { error: 'Para navegar debe iniciar session'})
         }else{  
             if(req.user.age === 0 && req.user.role === 'admin'){
@@ -116,7 +116,7 @@ router.get('/profile', (req, res) => {
 //ruta para ver los productos en tiempo real y eliminar productos. 
 router.get("/realtimeproducts", (req,res)=>{
     try{    
-            if(!req.user?.email){
+            if(!req.user){
                 res.render('login', { error: 'Para navegar debe iniciar session'})
                 }else{
             
@@ -132,7 +132,7 @@ router.get("/realtimeproducts", (req,res)=>{
 //ruta que esta vinculada al servidor de "websocket"
 router.get("/chats", (req,res)=>{
     try{    
-            if(!req.user?.email){
+            if(!req.user){
                 res.render('login', { error: 'Para navegar debe iniciar session'})
 
                 }else{
@@ -151,7 +151,7 @@ router.get("/chats", (req,res)=>{
 router.get('/products', async (req, res) => {
     try {
 
-        if(!req.user?.email){
+        if(!req.user){
             res.render('login', { error: 'Para navegar debe iniciar session'})
             }else{
 
